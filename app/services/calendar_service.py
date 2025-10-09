@@ -17,9 +17,14 @@ class CalendarService:
 
     async def list_today(self) -> List[dict[str, Any]]:
         response = await self.client.call("list_today_events")
+        print(f"response: {response.ok}")
         if not response.ok:
             return []
-        assert isinstance(response.data, list)
-        return response.data
+        # Handle both old format (list) and new format (dict with events key)
+        if isinstance(response.data, dict) and "events" in response.data:
+            return response.data["events"]
+        elif isinstance(response.data, list):
+            return response.data
+        return []
 
 
