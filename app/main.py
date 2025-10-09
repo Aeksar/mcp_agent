@@ -1,1 +1,18 @@
-﻿import asyncio\nfrom aiogram import Bot, Dispatcher\nfrom aiogram.enums import ParseMode\nfrom app.configs.settings import settings\n\n\nasync def main() -> None:\n if not settings.bot_token:\n raise RuntimeError(TELEGRAM_BOT_TOKEN is not set)\n bot = Bot(settings.bot_token, parse_mode=ParseMode.HTML)\n dp = Dispatcher()\n # TODO: register routers here\n await dp.start_polling(bot)\n\n\nif __name__ == __main__:\n asyncio.run(main())\n
+﻿import asyncio
+from aiogram import Bot, Dispatcher
+from aiogram.enums import ParseMode
+from app.configs.settings import settings
+
+async def main() -> None:
+    if not settings.bot_token:
+        raise RuntimeError("TELEGRAM_BOT_TOKEN is not set")
+    bot = Bot(settings.bot_token, parse_mode=ParseMode.HTML)
+    dp = Dispatcher()
+    from app.bots.router import router
+    dp.include_router(router)
+    await dp.start_polling(bot)
+        
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
