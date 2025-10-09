@@ -1,0 +1,1 @@
+﻿from dataclasses import dataclass\nimport os\n\n\n@dataclass\nclass Settings:\n    bot_token: str = os.getenv( TELEGRAM_BOT_TOKEN, )\n environment: str = os.getenv(ENV, dev)\n\n\nsettings = Settings()\n
