@@ -13,7 +13,7 @@ from langchain.agents import create_tool_calling_agent, AgentExecutor
 from datetime import datetime
 
 from app.configs.settings import settings
-from app.utils.escape import escape_markdown_v2
+from app.utils.escape import escape_markdown
 
 client = MultiServerMCPClient(
     {
@@ -52,5 +52,5 @@ async def get_agent_executor():
 async def mcp_handler(message: types.Message) -> None:
     agent = await get_agent_executor()
     result = await agent.ainvoke({"input": message.text})
-    answer = escape_markdown_v2(result["output"])
+    answer = escape_markdown(result["output"])
     await message.answer(answer, parse_mode=ParseMode.MARKDOWN_V2)

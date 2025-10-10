@@ -1,17 +1,10 @@
-def escape_markdown_v2(text: str, escape_urls: bool = False) -> str:
+def escape_markdown(text: str) -> str:
     """
-    Расширенная версия с дополнительными опциями
-    
-    Args:
-        text (str): Исходный текст
-        escape_urls (bool): Экранировать ли URL-символы (по умолчанию False)
+    Экранирует только потенциально опасные символы, но оставляет разметку
     """
-    # Базовые символы для экранирования
-    special_chars = '_*[]()~`>#+-=|}{.!'
+    dangerous_chars = ['[', ']', '(', ')', '~', '>', '#', '+', '-', '=', '|', '{', '}', '.', '!']
     
-    # Если нужно экранировать URL-символы
-    if escape_urls:
-        special_chars += ':/?&=%'
+    for char in dangerous_chars:
+        text = text.replace(char, f'\\{char}')
     
-    translation_table = str.maketrans({char: f'\\{char}' for char in special_chars})
-    return text.translate(translation_table)
+    return text

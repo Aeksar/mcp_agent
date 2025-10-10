@@ -15,7 +15,6 @@ def get_today_events():
     Returns:
         dict: A dictionary containing the events for today. The dictionary has a key "events" with the retrieved events as its value.
     """
-    calendar_service = GoogleCalendarService()
     events = calendar_service.get_today_events()
     return {"events": events}
 
@@ -29,7 +28,6 @@ def get_tomorrow_events():
     :return: A dictionary containing a list of events for tomorrow
     :rtype: Dict[str, List[Dict[str, date | str]]]
     """
-    calendar_service = GoogleCalendarService()
     events = calendar_service.get_tomorrow_events()
     return {"events": events}
 

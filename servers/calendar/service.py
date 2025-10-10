@@ -74,11 +74,11 @@ class GoogleCalendarService(CalendarService):
     # ---------- Методы интерфейса ----------
 
     def get_today_events(self) -> List[Event]:
-        today = datetime.now(self.timezone)
+        today = datetime.now(self.timezone).date() 
         return self._get_events_by_date(today)
 
     def get_tomorrow_events(self) -> List[Event]:
-        tomorrow = datetime.now(self.timezone) + timedelta(days=1)
+        tomorrow = datetime.now(self.timezone).date() + timedelta(days=1)
         return self._get_events_by_date(tomorrow)
 
 

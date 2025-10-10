@@ -26,12 +26,9 @@ class GoogleOAuthCredentials:
 class Settings:
     bot_token: str = os.getenv("TELEGRAM_BOT_TOKEN")
     mistral_api_key: str = os.getenv("MISTRAL_API_KEY")
-    environment: str = os.getenv("ENV", "dev")
+    
     mcp_calendar = MCPSettings("calendar")
+    mcp_mail = MCPSettings("mail")
 
 
 settings = Settings()
-
-if not settings.mcp_calendar.url and not (settings.mcp_calendar.command and settings.mcp_calendar.args):
-    print(settings.mcp_calendar.url)
-    raise ValueError("MCP_CALENDAR_URL or (MCP_CALENDAR_CMD and MCP_CALENDAR_ARGS) must be set")
