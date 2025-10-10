@@ -27,6 +27,7 @@ client = MultiServerMCPClient(
                 url=settings.mcp_mail.url,
                 timeout=settings.mcp_mail.mcp_request_timeout_sec
             ),
+        
     }
 )
 llm = ChatMistralAI(

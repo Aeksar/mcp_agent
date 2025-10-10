@@ -13,15 +13,6 @@ class MCPSettings:
         self.args: str | None = os.getenv(f"MCP_{service_name.upper()}_ARGS")
         self.mcp_request_timeout_sec: int = int(os.getenv("MCP_REQUEST_TIMEOUT_SEC", "30"))
 
-
-@dataclass
-class GoogleOAuthCredentials:
-    google_client_id: str | None = os.getenv("GOOGLE_CLIENT_ID")
-    google_client_secret: str | None = os.getenv("GOOGLE_CLIENT_SECRET")
-    google_redirect_uri: str | None = os.getenv("GOOGLE_REDIRECT_URI", "http://localhost:3000/auth/callback")
-    google_refresh_token: str | None = os.getenv("GOOGLE_REFRESH_TOKEN")
-
-
 @dataclass
 class Settings:
     bot_token: str = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -29,6 +20,7 @@ class Settings:
     
     mcp_calendar = MCPSettings("calendar")
     mcp_mail = MCPSettings("mail")
+    mcp_sheet = MCPSettings("sheet")
 
 
 settings = Settings()
