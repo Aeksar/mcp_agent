@@ -1,0 +1,20 @@
+services:
+  redis:
+    container_name: redis
+    env_file:
+      - redis.env
+    image: redis:8.0.4-alpine
+    ports:
+      - "6379:6379"
+    restart: always
+    volumes:
+      - agent_redis:/data
+    networks:
+      - my_network
+
+volumes:
+  agent_redis:
+
+networks:
+  my_network:
+    driver: bridge
