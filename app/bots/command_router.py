@@ -17,6 +17,5 @@ async def help_cmd(message: types.Message) -> None:
         "Commands:\n"
         "/health - check status\n"
         "/help - show this help\n"
-        "/today - show today calendar (MCP stub)"
     )
     await message.answer(text)
