@@ -59,4 +59,10 @@ def recieve_emails(mailbox: str = "INBOX", limit: int = 5):
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    import logging
+
+    logging.basicConfig(level=logging.DEBUG)
+    logging.info("Starting server")
+    mcp.settings.port = 8002
+    mcp.settings.host = "0.0.0.0"
+    mcp.run(transport="streamable-http")

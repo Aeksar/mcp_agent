@@ -48,22 +48,11 @@ def add_event(name: str, start: datetime, end: datetime):
 
     return {"message": "Event added"}
 
-@mcp.tool()
-def delete_event(event_id: str):
-    """
-    Deletes an event from the main calendar.
-
-    :param event_id: The ID of the event to delete
-    :return: A dictionary containing a message indicating the event was deleted
-    :rtype: Dict[str, str]
-    """
-    calendar_service = GoogleCalendarService()
-    calendar_service.delete_event(event_id)
-    return {"message": "Event deleted"}
-
 
 if __name__ == '__main__':
     # from datetime import timedelta
     # res = calendar_service.add_event("test", datetime.now(), datetime.now() + timedelta(days=1))
     # print(res)
+    mcp.settings.port = 8001
+    mcp.settings.host = "0.0.0.0"
     mcp.run(transport="streamable-http")
