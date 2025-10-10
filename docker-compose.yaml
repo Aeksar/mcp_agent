@@ -12,8 +12,20 @@ services:
     networks:
       - my_network
 
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - agent_qdrant:/qdrant/storage:z
+    restart: always
+    networks:
+      - my_network
+
 volumes:
   agent_redis:
+  agent_qdrant:
 
 networks:
   my_network:

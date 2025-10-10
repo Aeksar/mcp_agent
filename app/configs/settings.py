@@ -17,7 +17,8 @@ class MCPSettings:
 class Settings:
     bot_token: str = os.getenv("TELEGRAM_BOT_TOKEN")
     mistral_api_key: str = os.getenv("MISTRAL_API_KEY")
-    
+    redis_url: str = os.getenv("REDIS_URL")
+
     mcp_calendar = MCPSettings("calendar")
     mcp_mail = MCPSettings("mail")
     mcp_sheet = MCPSettings("sheet")
