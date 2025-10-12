@@ -45,7 +45,7 @@ async def get_tools():
     rag_tool = Tool(
         name="knowledge_base_search",
         func=rag_search,
-        description="Useful for searching internal knowledge base for reports and documentation."
+        description="Useful for searching internal knowledge base for reports and documentation and cooking recipes."
     )
 
     mcp_client = get_mcp_client()
