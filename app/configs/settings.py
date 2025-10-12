@@ -25,5 +25,8 @@ class Settings:
     redis_url: str = os.getenv("REDIS_URL")
     qdrant_url: str = os.getenv("QDRANT_URL")
 
+    embeddings_model: str = os.getenv("EMBEDDINGS_MODEL", "microsoft/codebert-base")
+    llm_model: str = os.getenv("LLM_MODEL", "mistral-large-latest")
+    collection_name: str = os.getenv("COLLECTION_NAME", "rag")
 
 settings = Settings()

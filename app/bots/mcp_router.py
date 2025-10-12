@@ -2,7 +2,7 @@ from aiogram import Router, types
 from aiogram.enums import ParseMode
 
 from app.utils.escape import escape_markdown
-from app.services.agent import get_agent
+from app.agent.agent import get_agent
 
 router = Router(name="mcp_handler")
 
