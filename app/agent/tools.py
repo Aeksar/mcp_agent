@@ -36,7 +36,7 @@ def get_mcp_client():
 
 def rag_search(query: str) -> str:
     store = get_store(settings.collection_name)
-    retriever = store.as_retriever(k=5)
+    retriever = store.as_retriever(search_kwargs={"k": 15})
     docs = retriever.invoke(query)
     return "\n\n".join([d.page_content for d in docs])
 

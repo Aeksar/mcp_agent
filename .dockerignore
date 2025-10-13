@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+.env.local
+credentials.json
+token.json
+redis.env
+.env
+.gitignore
+pupupu.py
+блинчики.pdf

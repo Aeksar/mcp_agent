@@ -28,9 +28,9 @@ def get_store(collection_name: str) -> VectorStore:
 
 def load_to_store(vectorstore: VectorStore, contents: list[str]):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50,
-        separators=["\n\n", "\n", " "]
+        chunk_size=200,
+        chunk_overlap=20,
+        separators=["\n\n", "\n", "."]
     )
     texts = []
     metadatas = []
@@ -38,10 +38,9 @@ def load_to_store(vectorstore: VectorStore, contents: list[str]):
 
     for content in contents:
         chunks = splitter.split_text(content)
-        doc_id = str(uuid4())
         for j, chunk in enumerate(chunks):
             texts.append(chunk)
-            metadatas.append({"source": f"doc_{doc_id}", "chunk": j})
+            metadatas.append({"chunk": j})
             ids.append(uuid4().hex)
     vectorstore.add_texts(
         texts=texts,

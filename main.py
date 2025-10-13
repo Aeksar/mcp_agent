@@ -14,11 +14,11 @@ async def main() -> None:
     dp = Dispatcher()
     dp.include_router(command_router)
     dp.include_router(mcp_router)
-    logging.info("Bot started")
+    logging.info("Bot starting")
     await dp.start_polling(bot)
         
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.ERROR)
     asyncio.run(main())
 

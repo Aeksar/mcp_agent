@@ -1,7 +1,7 @@
 ﻿from dataclasses import dataclass
 import os
 import dotenv
-import shlex
+
 
 dotenv.load_dotenv()
 

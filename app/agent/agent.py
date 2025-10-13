@@ -22,7 +22,6 @@ llm = ChatMistralAI(
 
 async def get_agent():
     tools = await get_tools()
-    print(tools)
     agent = create_tool_calling_agent(llm, tools, tamplate)
     agent_exec = AgentExecutor.from_agent_and_tools(agent, tools)
     agent_with_history = RunnableWithMessageHistory(
